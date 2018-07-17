@@ -15,6 +15,7 @@
 class Order < ApplicationRecord
   belongs_to :customer
   belongs_to :cart
+  has_one :charge
 
   enum status: { created: 0, proccessing: 1, paid: 2, fullfilment: 3 , shipped: 4, delivered: 5}
 end
