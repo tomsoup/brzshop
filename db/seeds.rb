@@ -30,12 +30,12 @@ puts "20 Products created"
 @customer_one = Customer.find(1)
 @customer_two = Customer.find(2)
 @customer_three = Customer.find(3)
-
-@products = [*1..Product.all.size]
+@product_size = Product.all.size
+@products = [*1..@product_size]
 #  - 1 Should be linked to Customer 1
 
 1.times do |buy|
-  @customer_one.carts.create!(product_ids: @products.sample(5))
+  @customer_one.carts.create!(product_ids: @products.sample(rand(1...@product_size)))
   cart = Cart.last
   cart.create_order!(
     customer_id: @customer_one.id
@@ -51,7 +51,7 @@ puts "Created 1 successful order for Customer 1"
 #   - 2 Should be linked to Customer 2
 
 2.times do |buy|
-  @customer_two.carts.create!(product_ids:  @products.sample(5))
+  @customer_two.carts.create!(product_ids:  @products.sample(rand(1...@product_size)))
   cart = Cart.last
   cart.create_order!(
     customer_id: @customer_two.id
@@ -67,7 +67,7 @@ puts "Created 2 successful order for Customer 2"
 #   - 1 Should be linked to Customer 3
 
 1.times do |buy|
-  @customer_three.carts.create!(product_ids:  @products.sample(5))
+  @customer_three.carts.create!(product_ids:  @products.sample(rand(1...@product_size)))
   cart = Cart.last
   cart.create_order!(
     customer_id: @customer_three.id
@@ -84,7 +84,7 @@ puts "Created 1 successful order for Customer 3"
 # - 2 Should be linked to Customer 3
 
 2.times do |buy|
-  @customer_three.carts.create!(product_ids: @products.sample(5))
+  @customer_three.carts.create!(product_ids: @products.sample(rand(1...@product_size)))
   cart = Cart.last
   cart.create_order!(
     customer_id: @customer_three.id
@@ -97,7 +97,7 @@ end
 puts "Created 2 abandoned cart + order for Customer 3"
 
 1.times do |buy|
-  @customer_one.carts.create!(product_ids: @products.sample(5))
+  @customer_one.carts.create!(product_ids: @products.sample(rand(1...@product_size)))
   cart = Cart.last  
   cart.create_order!(
     customer_id: @customer_one.id
@@ -111,7 +111,7 @@ puts "Created 1 abandoned cart + order for Customer 1"
   # - 3 should be linked to Customer 3
 
 3.times do |buy|
-  @customer_three.carts.create!(product_ids: @products.sample(5))
+  @customer_three.carts.create!(product_ids: @products.sample(rand(1...@product_size)))
   cart = Cart.last
   cart.create_order!(
     customer_id: @customer_three.id

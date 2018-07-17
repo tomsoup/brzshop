@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :charges
-  resources :orders
-  resources :line_items
-  resources :carts
-  resources :products
+  resources :orders, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

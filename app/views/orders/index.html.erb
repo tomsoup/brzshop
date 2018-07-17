@@ -1,0 +1,32 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th><%= model_class.human_attribute_name(:order_status) %></th>
+      <th><%= model_class.human_attribute_name(:customer_id) %></th>
+      <th><%= model_class.human_attribute_name(:cart_qty) %></th>
+      <th><%= model_class.human_attribute_name(:cart_status) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:total) %></th>
+      <th><%= model_class.human_attribute_name(:tax) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        
+        <td><%= order.status %></td>
+        <td><%= "#{order.customer.first_name} #{order.customer.last_name}" %></td>
+        <td><%= order.cart.products_qty %></td>
+        <td><%= order.cart.status %></td>
+        <td><%=order.created %></td>
+        <td><%= order.total %></td>
+        <td><%= order.tax %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
