@@ -13,4 +13,15 @@
 class LineItem < ApplicationRecord
   belongs_to :cart
   belongs_to :product
+
+  before_save do
+    if cart.status != "created"
+      errors.add(:status, 'Cannot modified an abandonded or paid Cart')
+      throw(:abort)
+    end
+  end
+
+  after_save do
+    cart.save!
+  end
 end

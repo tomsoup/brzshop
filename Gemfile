@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
   gem 'faker' , git: 'https://github.com/stympy/faker'
+  gem 'factory_bot_rails', '~> 4.10'
 end
 
 group :development do
