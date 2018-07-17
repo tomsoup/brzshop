@@ -16,5 +16,6 @@ class Cart < ApplicationRecord
   has_many :line_items
   has_many :products, through: :line_items
   has_one :order
-  
+
+  enum status: { created: 0, abandoned: 1, paid: 2 }
 end
