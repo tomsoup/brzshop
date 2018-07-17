@@ -13,6 +13,9 @@
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%= model_class.human_attribute_name(:total) %></th>
       <th><%= model_class.human_attribute_name(:tax) %></th>
+      <th><%= model_class.human_attribute_name(:paid) %></th>
+      <th><%= model_class.human_attribute_name(:charge_disputed) %></th>
+      <th><%= model_class.human_attribute_name(:refunded) %></th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +29,13 @@
         <td><%=order.created %></td>
         <td><%= order.total %></td>
         <td><%= order.tax %></td>
+        <% if order.charge %>
+          <td><%= order.charge.paid? %></td>
+          <td><%= order.charge.disputed? %></td>
+          <td><%= order.charge.refunded? %></td>
+        <% else %>
+          <td colspan="3"> No Charge</td>
+        <% end %> 
       </tr>
     <% end %>
   </tbody>

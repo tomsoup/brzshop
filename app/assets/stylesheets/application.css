@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ td[colspan="3"] {
+  text-align: center;
+}
